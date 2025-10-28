@@ -1,0 +1,1 @@
+# magzin-ai
