@@ -2,8 +2,9 @@
 
 import { client } from '@/lib/prisma'
 import { v4 } from 'uuid'
+import { Automation } from '@/constants/automations.type'
 
-export const createAutomation = async (clerkId: string, id?: string) => {
+export const createAutomation = async (clerkId: string, data: Automation) => {
   return await client.user.update({
     where: {
       clerkId,
@@ -11,7 +12,7 @@ export const createAutomation = async (clerkId: string, id?: string) => {
     data: {
       automations: {
         create: {
-          ...(id && { id }),
+          ...data,
         },
       },
     },

@@ -16,10 +16,10 @@ export const useMutationData = (
   const client = useQueryClient()
   const { mutate, isPending } = useMutation({
     mutationKey,
-    mutationFn,
+    mutationFn: (data) => mutationFn(data),
     onSuccess: (data) => {
       if (onSuccess) onSuccess()
-      return toast(data?.status === 200 ? 'Success' : 'Error', {
+      toast(data?.status === 200 ? 'Success' : 'Error', {
         description: data.data,
       })
     },

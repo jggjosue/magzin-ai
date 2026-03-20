@@ -12,8 +12,7 @@ type Props = {}
 const CreateAutomation = (props: Props) => {
   const mutationId = useMemo(() => v4(), [])
 
-  console.log(mutationId)
-  const { isPending, mutate } = useCreateAutomation(mutationId)
+  const { isPending, mutate } = useCreateAutomation()
 
   return (
     <Button

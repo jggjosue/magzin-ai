@@ -15,11 +15,12 @@ import useZodForm from './use-zod-form'
 import { AppDispatch, useAppSelector } from '@/redux/store'
 import { useDispatch } from 'react-redux'
 import { TRIGGER } from '@/redux/slices/automation'
+import { Automation } from '@/constants/automations.type'
 
-export const useCreateAutomation = (id?: string) => {
-  const { isPending, mutate } = useMutationData(
+export const useCreateAutomation = () => {
+  const { isPending, mutate } = useMutationData<Automation>(
     ['create-automation'],
-    () => createAutomations(id),
+    createAutomations,
     'user-automations'
   )
 
